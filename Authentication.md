@@ -128,3 +128,37 @@ const ketting = new Ketting(
 
 This is also how the client might be setup after an `implicit` flow.
 
+Multi-domain authentication
+---------------------------
+
+When using Ketting to hop from domain-to-domain, it might be important for
+authentication information to not get passed to every domain.
+
+By default Ketting *does* assume that authentication will be sent to every
+domain. To avoid this, use the per-domain auth syntax:
+
+```typescript
+const ketting = new Ketting(
+  'api.example.org',
+  {
+    match: {
+      '*.example.org': {
+         auth: {
+           type: 'oauth2',
+           clientId: 'fooClient',
+           clientSecret: '...', // Sometimes optional
+           accessToken: '...',
+          refreshToken: '...', // Optional.
+          tokenEndpointUri: 'https://api.example.org/oauth/token',
+        }
+     },
+     'api.github.com': {
+       auth: {
+         type: 'basic',
+         userName: 'foo',
+         password: 'bar'
+       }
+     }
+   }
+};
+```
