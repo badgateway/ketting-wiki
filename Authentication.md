@@ -1,8 +1,10 @@
 Ketting supports the following authentication schemes:
 
-* HTTP Basic auth
-* OAuth2 flows
-  * `password` grant
+* HTTP Basic auth.
+* OAuth2 flows:
+  * `password` grant.
+  * `client_credentials` grant.
+  * `authorization_code` grant.
   * `implicit` grant
 
 When using Ketting across multiple domains, it optionally supports per-domain authentication.
