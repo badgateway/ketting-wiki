@@ -4,7 +4,7 @@ browsers and in node.js.
 It's entirely written in Typescript, but if you don't use Typescript you can
 use it without having to think about Typescript.
 
-This wiki covers many of its features.
+Table of contents:
 
 * [Installation](Installation)
 * [Getting started](Getting Started)

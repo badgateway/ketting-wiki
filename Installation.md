@@ -56,7 +56,9 @@ with:
 After this, `Ketting` will be availabe as a global object and you can use it
 with:
 
-    const ketting = new Ketting('https://api.example.org');
+```javascript
+const ketting = new Ketting('https://api.example.org');
+```
 
 Next steps
 ----------
