@@ -63,4 +63,4 @@ const ketting = new Ketting('https://api.example.org');
 Next steps
 ----------
 
-Read [Getting started](Getting started).
+Read [Getting started](Getting-started).
