@@ -8,7 +8,7 @@ useful and more likely to change in new major versions.
 TOC
 ---
 
-{:toc}
+{:toc:}
 
 Ketting class
 -------------
