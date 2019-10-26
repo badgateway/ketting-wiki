@@ -9,5 +9,6 @@ Table of contents:
 * [Installation](Installation).
 * [Getting started](Getting-Started).
 * [Authentication](Authentication).
+* [Public API description](API).
 * [CORS header suggestions](CORS).
 * [Typescript features](Typescript).
