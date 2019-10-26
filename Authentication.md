@@ -7,7 +7,8 @@ Ketting supports the following authentication schemes:
   * `authorization_code` grant.
   * `implicit` grant
 
-When using Ketting across multiple domains, it optionally supports per-domain authentication.
+When using Ketting across multiple domains, it optionally supports per-domain
+authentication.
 
 Basic Auth
 ----------
@@ -24,7 +25,7 @@ const ketting = new Ketting(
   }
 );
 ```
-    
+
 OAuth2
 ------
 
