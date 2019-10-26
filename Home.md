@@ -6,7 +6,8 @@ use it without having to think about Typescript.
 
 Table of contents:
 
-* [Installation](Installation)
-* [Getting started](Getting-Started)
-* [Authentication](Authentication)
-* [Typescript features](Typescript)
+* [Installation](Installation).
+* [Getting started](Getting-Started).
+* [Authentication](Authentication).
+* [CORS header suggestions](CORS).
+* [Typescript features](Typescript).
