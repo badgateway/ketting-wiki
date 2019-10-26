@@ -5,10 +5,15 @@ Methods and properties that are considered 'internal' have been removed from
 these types. Feel free to use these methods, they are just less likely to be
 useful and more likely to change in new major versions.
 
-TOC
----
+Contents
+--------
 
-{:toc:}
+* [Ketting class](#ketting-class)
+* [KettingInit](#kettinginit)
+* [Resource class](#resource-class)
+* [Link class](#link-class)
+* [Follower](#follower)
+* [Representor](#representor)
 
 Ketting class
 -------------
