@@ -42,7 +42,7 @@ const authorResource = await homeResource
   .follow('item')
   .follow('author');
 
-console.log(await author.get());
+console.log(await authorResource.get());
 ```
 
 Here we followed the entire chain of links to ultimately get to the author
