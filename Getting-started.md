@@ -48,35 +48,7 @@ console.log(await authorResource.get());
 Here we followed the entire chain of links to ultimately get to the author
 resource. Finally we do a `GET` request to get the body.
 
-A few things that are of note:
-
-* Because Ketting supports all the above formats, it didn't matter what
-  format any of the intermediate hops were in. As long as they had some kind
-  of supported link format, `follow()` will work.
-* Ketting follows relationships, and you don't specify urls. This means that
-  any of the hops can be on different domains or different APIs altogether.
-  This means that multiple APIs can just be linked together just like the web
-  can be linked together from site to site.
-* `follow()` can be chained, and you can do this as many hops as you want. Just
-  `await` the the last promise and you're good to go.
-* Under the hood, `follow()` actually returns a special promise. Aside from the
-  usual `then()` and `catch()`, it also has a `follow()` and `followAll()`.
-
-Ketting also has a `followAll()` method. This method is similar to `follow()`
-but can be used if a document has many links with the same rel.
-
-For example, if the above article collection had many articles, this is how you
-can output each article's body:
-
-```typescript
-const articleResources = await homeResource
-  .follow('article-collection')
-  .followAll('item')
-
-for(const articleResource of articleResources) {
-  console.log(await articleResource.get());
-}
-```
+[Read the docs on follow() and followAll()](Following-Links)
 
 Resources and HTTP requests
 ---------------------------

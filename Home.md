@@ -8,6 +8,8 @@ Table of contents:
 
 * [Installation](Installation).
 * [Getting started](Getting-Started).
+* [Following Links](Following-Links).
+
 * [Authentication](Authentication).
 * [Public API description](API).
 * [CORS header suggestions](CORS).
