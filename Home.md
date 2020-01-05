@@ -4,11 +4,13 @@ browsers and in node.js.
 It's entirely written in Typescript, but if you don't use Typescript you can
 use it without having to think about Typescript.
 
-Table of contents:
+Getting started
 
 * [Installation](Installation).
 * [Getting started](Getting-Started).
 * [Following Links](Following-Links).
+
+Advanced features
 
 * [Authentication](Authentication).
 * [Public API description](API).
