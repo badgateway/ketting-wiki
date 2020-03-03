@@ -6,7 +6,7 @@ use every feature.
 Access-Control-Allow-Origin: [yourdomain]
 Access-Control-Allow-Headers: Content-Type, User-Agent, Authorization, Accept, Prefer, Prefer-Push
 Access-Control-Allow-Methods: DELETE, GET, PATCH, POST, PUT
-Access-Control-Expose-Headers: Location
+Access-Control-Expose-Headers: Location, Link
 ```
 
 You might want to customize these for your specific purposes. A good rule
