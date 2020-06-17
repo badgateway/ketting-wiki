@@ -4,7 +4,7 @@ use every feature.
 
 ```http
 Access-Control-Allow-Origin: [yourdomain]
-Access-Control-Allow-Headers: Content-Type, User-Agent, Authorization, Accept, Prefer, Prefer-Push
+Access-Control-Allow-Headers: Content-Type, User-Agent, Authorization, Accept, Prefer, Prefer-Push, Link
 Access-Control-Allow-Methods: DELETE, GET, PATCH, POST, PUT
 Access-Control-Expose-Headers: Location, Link
 ```
@@ -17,6 +17,7 @@ Here's a breakdown of how each request header is used:
 * `Authorization` - Only used if Authentication is on.
 * `Accept` - Sent with every `GET` request.
 * `Content-Type` - Sent with every `PUT`, `PATCH` and `POST` request.
+* `Link` - Set to `Link` to provide a means for serialising one or more links in HTTP headers. `Link: < uri-reference >; param1=value1; param2="value2"`
 * `Prefer` - Set to `Prefer: transclude="rel1, rel2"` as a hint to the server
   that it might want to embed linked resources for optimization. See
   [Prefer-Transclude][2].
