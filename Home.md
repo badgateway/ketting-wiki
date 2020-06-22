@@ -10,7 +10,7 @@ use it without having to think about Typescript.
 * [Getting started](Getting-Started).
 * [Following Links](Following-Links).
 
-Advanced features
+## Advanced features
 
 * [Authentication](Authentication).
 * [Public API description](API).
