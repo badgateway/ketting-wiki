@@ -1,6 +1,7 @@
 Ketting supports the following authentication schemes:
 
-* HTTP Basic auth.
+* HTTP Basic auth
+* Bearer token auth
 * OAuth2 flows:
   * `password` grant.
   * `client_credentials` grant.
@@ -14,16 +15,13 @@ Basic Auth
 ----------
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    auth: {
-      type: 'basic',
-      userName: 'foo',
-      password: 'bar'
-    }
-  }
-);
+import { Client, basicAuth } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(basicAuth({
+  userName: 'foo',
+  password: 'bar'
+});
 ```
 
 OAuth2
@@ -43,57 +41,49 @@ server, it will preemptively do a refresh.
 ### OAuth2 "password" grant
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    auth: {
-      type: 'oauth2',
-      grantType: 'password',
-      clientId: 'fooClient',
-      clientSecret: 'barSecret',
-      tokenEndpointUri: 'https://api.example.org/oauth/token',
-      scopes: ['test']
-      userName: 'fooOwner',
-      password: 'barPassword'
-    }
-  }
-);
+import { Client, oauth2 } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(oauth2({
+  grantType: 'password',
+  clientId: 'fooClient',
+  clientSecret: 'barSecret',
+  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  scopes: ['test']
+  userName: 'fooOwner',
+  password: 'barPassword'
+});
 ```
 
 
 ### OAuth2 "client_credentials" grant type
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    auth: {
-      type: 'oauth2',
-      grantType: 'client_credentials',
-      clientId: 'fooClient',
-      clientSecret: 'barSecret',
-      tokenEndpointUri: 'https://api.example.org/oauth/token',
-      scopes: ['test']
-    }
-  }
-};
+import { Client, oauth2 } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(oauth2({
+  grantType: 'client_credentials',
+  clientId: 'fooClient',
+  clientSecret: 'barSecret',
+  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  scopes: ['test']
+});
 ```
 
 ### OAuth2 "authorization_code" grant type
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    auth: {
-      type: 'oauth2',
-      grant_type: 'authorization_code',
-      clientId: 'fooClient',
-      code: '...',
-      tokenEndpointUri: 'https://api.example.org/oauth/token',
-    }
-  }
-};
+import { Client, oauth2 } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(oauth2({
+  grant_type: 'authorization_code',
+  clientId: 'fooClient',
+  code: '...',
+  tokenEndpointUri: 'https://api.example.org/oauth/token',
+});
+
 ```
 
 'authorization_code' flow is a multi-step process. The first step is to
@@ -108,25 +98,25 @@ The reason this is not implemented in Ketting, is because taking over
 navigation in a browser is considered out of scope. Ketting is just
 responsible for communicating with the API.
 
+If you require [PKCE](https://tools.ietf.org/html/rfc7636) support, you
+can also add the `code_verifier` field to the settings object.
+
 ### OAuth2: setting up auth with an accesstoken and/or refresh token
 
 If an access token was obtained via other means (with or without a refresh
 token), this is how the client can be set up:
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    auth: {
-      type: 'oauth2',
-      clientId: 'fooClient',
-      clientSecret: '...', // Sometimes optional
-      accessToken: '...',
-      refreshToken: '...', // Optional.
-      tokenEndpointUri: 'https://api.example.org/oauth/token',
-    }
-  }
-};
+import { Client, oauth2 } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(oauth2({
+  clientId: 'fooClient',
+  clientSecret: '...', // Sometimes optional
+  accessToken: '...',
+  refreshToken: '...', // Optional.
+  tokenEndpointUri: 'https://api.example.org/oauth/token',
+});
 ```
 
 This is also how the client might be setup after an `implicit` flow.
@@ -138,30 +128,24 @@ When using Ketting to hop from domain-to-domain, it might be important for
 authentication information to not get passed to every domain.
 
 By default Ketting *does* assume that authentication will be sent to every
-domain. To avoid this, use the per-domain auth syntax:
+domain. To avoid this, you can specify a second argument to `use()` with
+a domainname.
+This argument supports wildcards.
 
 ```typescript
-const ketting = new Ketting(
-  'api.example.org',
-  {
-    match: {
-      '*.example.org': {
-         auth: {
-           type: 'oauth2',
-           clientId: 'fooClient',
-           clientSecret: '...', // Sometimes optional
-           accessToken: '...',
-          refreshToken: '...', // Optional.
-          tokenEndpointUri: 'https://api.example.org/oauth/token',
-        }
-     },
-     'api.github.com': {
-       auth: {
-         type: 'basic',
-         userName: 'foo',
-         password: 'bar'
-       }
-     }
-   }
-};
+const client = new Client('api.example.org');
+
+client.use(oauth2({
+  clientId: 'fooClient',
+  clientSecret: '...', // Sometimes optional
+  accessToken: '...',
+  refreshToken: '...', // Optional.
+  tokenEndpointUri: 'https://api.example.org/oauth/token',
+}, '*.example.org');
+
+
+client.use(basicAuth({
+  userName: 'foo',
+  password: 'bar'
+}, 'api.github.com');
 ```

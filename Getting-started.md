@@ -62,46 +62,52 @@ function, you get a resource back.
 This resource has a few functions that all map to HTTP requests.
 
 ```typescript
-// Does a GET request and returns the body
-const body = await resource.get();
+// Does a GET request and returns a 'State' object with a 'data' property that
+// contains the parsed response body.
+const state = await resource.get();
+console.log(state.data);
 
 // Updates the resource with PUT
-await resource.put({foo: 'bar'});
+await resource.put({
+  data: {
+    foo: 'bar'
+  }
+});
 
 // Issues a DELETE request
 await resource.delete();
 
-// Issues a POST request
-await resource.post({foo: 'bar'});
+// Issues an RPC-style POST request
+await resource.post({
+  data: {
+    foo: 'bar'
+  }
+});
+
+// Creates a new resource with POST.
+//
+// If the server returns 201 Created and a Location header, a new resource
+// object is returned.
+const newResource = await resource.postFollow({
+  data: {
+    foo: 'bar'
+  }
+});
 
 // Issues a PATCH request
-await resource.patch({foo: 'bar'});
-```
-
-The `post` function is a bit special. HTTP `POST` is often used to create new
-resources. When this happens, typically APIs return:
-
-* `201 Created`
-* A `Location` HTTP header pointing to the newly created resource.
-
-When both of these are true, the `post()` function will return a new resource
-object:
-
-```typescript
-const newResource = await resource.post({foo: 'bar'});
-console.log(await newResource.get());
+await resource.patch({
+  data: {
+    foo: 'bar'
+  }
+});
 ```
 
 If you want to issue a completely custom HTTP request, perhaps to use a special
 http method, headers or different kind of request body, the Resource object also
 has a `fetch()` method.
 
-This `fetch()` method is similar to the [Fetch API][fetch] in browsers. There's
-2 main differences:
-
-1. You don't need to specify a URL. So the url argument can be skipped.
-2. If a URL is specified, you can specify a relative url. The relative url will
-   be applied to the URL of the current resource.
+This `fetch()` method is similar to the [Fetch API][fetch] in browsers, but it does
+not have a 'url' argument.
 
 ```typescript
 const response = await resource.fetch({method: 'SEARCH'});
@@ -121,17 +127,96 @@ const newResource = await resource.follow('rel');
 const manyResources = await resource.followAll('rel');
 ```
 
-Aside from that, it also has a few functions to just get information about links:
+If you want more information about the links that the resource currently has,
+you can get to this via the State object.
 
 ```typescript
-const links = await resource.links('rel');
-const link = await resource.link('rel');
+const state = await resource.get();
+
+const link = state.links.get('rel');
+const links = state.links.getMany('rel');
 ```
 
-The reason these are both `async` functions, is because Ketting will not
-automatically grab a resource's request body. It will wait until it is
-absolutely needed to do so, so when `link` or any other link-related method
-is called, it will fetch the request body if it didn't have it already.
+Events
+------
+
+### 'update' event
+
+This event will get triggered whenever a new State is received
+from the server, either through a `GET` request or if it was
+transcluded.
+
+It will also trigger when calling `PUT` with a full state object,
+and when `updateCache()` was used.
+
+```typescript
+resource.on('update', state => {
+
+  console.log('We got a new body for this resource!');
+  console.log(state.data);
+
+});
+```
+
+### 'stale' event
+
+Whenever an unsafe HTTP method was used, the cache expires. When this happens,
+a 'stale' event gets emitted.
+
+```typescript
+resource.on('stale', => {
+
+  console.log('Cache is stale, lets get a new body');
+  resource.refresh();
+
+});
+```
+
+### 'delete' event
+
+This event gets triggered when the resource is deleted. It could be useful
+to notify a user.
+
+```typescript
+resource.on('delete', => {
+
+  console.log('Resource is bye bye');
+
+});
+```
+
+Managing the cache
+------------------
+
+Ketting by default has a pretty aggressive cache, and will not expire anything
+unless explictly asked for.
+
+It's possible to do this by calling `clearCache` on the resource.
+
+```typescript
+resource.clearCache();
+```
+
+It's also possible to update the local state cache. This can be helpful in
+frontend applications to emit the resource state to all listeners, and makes
+frameworks like Redux not as needed.
+
+```typescript
+// Update the cache and emit 'update' events.
+resource.updateCache({data: { foo: 'BAR!'}});
+```
+
+If the aggressive 'forever' cache is not desired, it's possible to swap it out
+for a cache that only keeps State objects for 30 seconds:
+
+```typescript
+const client = new Client('https://api.example.org');
+client.stateCache = new ShortCache();
+```
+
+There is also a `NeverCache` but this is not recommended to use unless you really
+know what you're doing or you're testing. Not having a cache at all wrecks a lot
+of optimizations.
 
 
 Other functions on resources
