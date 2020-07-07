@@ -10,13 +10,13 @@ If you intend to use Ketting in node.js, all you need to do is run:
 After running this, you can start using using it like this:
 
 ```javascript
-const { Ketting } = require('ketting');
+const { Client } = require('ketting');
 ```
 
 In typescript, you can use it as follows:
 
 ```typescript
-import { Ketting } from 'ketting';
+import { Client } from 'ketting';
 ```
 
 Webpack builds
@@ -57,7 +57,7 @@ After this, `Ketting` will be availabe as a global object and you can use it
 with:
 
 ```javascript
-const ketting = new Ketting('https://api.example.org');
+const ketting = new Client('https://api.example.org');
 ```
 
 Next steps
