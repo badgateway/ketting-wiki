@@ -154,7 +154,7 @@ If the home document _was_ written in HTML, everything would still have worked
 the same.
 
 Perhaps you want to link to another Hypermedia API that also uses links, but
-a different format. Ketting abstracts this away, and all you need to kow as a
+a different format. Ketting abstracts this away, and all you need to know as a
 user is that they use one of the supported hypermedia formats.
 
 State and links
@@ -192,7 +192,7 @@ Now our goal is to add a category to an article. We do this via a link:
 ```typescript
 const state = await authorRes.get();
 state.links.add({
-  href: '/category/5,
+  href: '/category/5',
   rel: 'category'
 });
 await authorRes.put(state);

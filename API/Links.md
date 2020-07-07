@@ -70,7 +70,7 @@ class Links {
   /**
    * Set a link
    *
-   * If a link with the provided 'rel' already existed, it will be overwritten.
+   * If a link with the provided 'rel' already exists, it will be overwritten.
    */
   set(link: Link | NewLink): void
   set(rel: string, href: string): void
