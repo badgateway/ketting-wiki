@@ -4,7 +4,7 @@ browsers and in node.js.
 It's entirely written in Typescript, but if you don't use Typescript you can
 use it without having to think about Typescript.
 
-## Getting started
+## First steps
 
 * [Installation](Installation).
 * [Getting started](Getting-Started).
