@@ -1,1 +1,1 @@
-Want to submit changes to the Wiki, submit a PR [here](https://github.com/badgateway/ketting-wiki/)
+Want to submit changes to the Wiki? Submit a PR [here](https://github.com/badgateway/ketting-wiki/)
