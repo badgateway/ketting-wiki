@@ -271,8 +271,8 @@ const result = articleCollection
 Next steps
 ----------
 
-* [Optimizing](Optimizing many requests).
-* [Typescript features](Typescript features).
+* [Optimizing many requests](Optimizing).
+* [Typescript features](Typescript-Features).
 
 [weblinking]: https://tools.ietf.org/html/rfc8288
 [html-a]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
