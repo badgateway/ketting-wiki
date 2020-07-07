@@ -45,14 +45,7 @@ class Client {
    */
   fetcher: Fetcher;
 
-  constructor(bookmarkUri: string) {
-    this.bookmarkUri = bookmarkUri;
-    this.fetcher = new Fetcher();
-    this.fetcher.use( this.cacheExpireHandler );
-    this.fetcher.use( this.acceptHeader );
-    this.cache = new ForeverCache();
-    this.resources = new Map();
-  }
+  constructor(bookmarkUri: string);
 
   /**
    * Follows a relationship, based on its reltype. For example, this might be
@@ -61,7 +54,7 @@ class Client {
    * This function can also follow templated uris. You can specify uri
    * variables in the optional variables argument.
    */
-  follow<TFollowedResource = any>(rel: string, variables?: LinkVariables): FollowPromiseOne<TFollowedResource>; 
+  follow<TFollowedResource = any>(rel: string, variables?: LinkVariables): FollowPromiseOne<TFollowedResource>;
 
   /**
    * Returns a resource by its uri.
@@ -79,7 +72,7 @@ class Client {
    * @example
    * const res = ketting.go(); // bookmark
    */
-  go<TResource = any>(uri?: string): Resource<TResource>; 
+  go<TResource = any>(uri?: string): Resource<TResource>;
 
   /**
    * Adds a fetch middleware, which will be executed for
@@ -88,17 +81,17 @@ class Client {
    * If 'origin' is specified, fetch middlewares can be executed
    * only if the host/origin matches.
    */
-  use(middleware: FetchMiddleware, origin: string = '*'); 
+  use(middleware: FetchMiddleware, origin: string = '*');
 
   /**
    * Clears the entire state cache
    */
-  clearCache(); 
+  clearCache();
 
   /**
    * Transforms a fetch Response to a State object.
    */
-  async getStateForResponse(uri: string, response: Response): Promise<State>; 
+  async getStateForResponse(uri: string, response: Response): Promise<State>;
 
   /**
    * Caches a State object
@@ -106,7 +99,7 @@ class Client {
    * This function will also emit 'update' events to resources, and store all
    * embedded states.
    */
-  cacheState(state: State); 
+  cacheState(state: State);
 
 }
 ```

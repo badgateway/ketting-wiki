@@ -192,52 +192,26 @@ export class Resource<T = any> extends EventEmitter {
   on(event: 'delete', listener: () => void) : this;
 
   /**
-   * Subscribe to the 'update' event and unsubscribe after it was
-   * emitted the first time.
+   * Subscribe to an event and unsubscribe after it was emitted the first time.
    */
   once(event: 'update', listener: (state: State) => void) : this
-
-  /**
-   * Subscribe to the 'stale' event and unsubscribe after it was
-   * emitted the first time.
-   */
   once(event: 'stale',  listener: () => void) : this;
-
-  /**
-   * Subscribe to the 'delete' event and unsubscribe after it was
-   * emitted the first time.
-   */
   once(event: 'delete', listener: () => void) : this;
 
   /**
-   * Unsubscribe from the 'update' event
+   * Unsubscribe from an event.
    */
   off(event: 'update', listener: (state: State) => void) : this
-
-  /**
-   * Unsubscribe from the 'stale' event
-   */
   off(event: 'stale',  listener: () => void) : this;
-
-  /**
-   * Unsubscribe from the 'delete' event
-   */
   off(event: 'delete', listener: () => void) : this;
 
   /**
-   * Emit an 'update' event.
+   * Emit an event.
    */
   emit(event: 'update', state: State) : boolean
-
-  /**
-   * Emit a 'stale' event.
-   */
   emit(event: 'stale') : boolean;
-
-  /**
-   * Emit a 'delete' event.
-   */
   emit(event: 'delete') : boolean;
+
 }
 ```
 

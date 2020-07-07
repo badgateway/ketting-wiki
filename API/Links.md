@@ -59,7 +59,7 @@ export type Link = {
  */
 class Links {
 
-  constructor(public defaultContext: string, links?: Link[] | Links); 
+  constructor(public defaultContext: string, links?: Link[] | Links);
 
   /**
    * Adds a link to the list
@@ -80,43 +80,29 @@ class Links {
    *
    * If the link does not exist, undefined is returned.
    */
-  get(rel: string): Link|undefined; 
+  get(rel: string): Link|undefined;
 
   /**
    * Delete all links with the given 'rel'.
    */
-  delete(rel: string): void; 
+  delete(rel: string): void;
 
   /**
    * Return all links that have a given rel.
    *
    * If no links with the rel were found, an empty array is returned.
    */
-  getMany(rel: string): Link[] {
-
-    return this.store.get(rel) || [];
-
-  }
+  getMany(rel: string): Link[];
 
   /**
    * Return all links.
    */
-  getAll(): Link[] {
-    const result = [];
-    for(const links of this.store.values()) {
-      result.push(...links);
-    }
-    return result;
-  }
+  getAll(): Link[];
 
   /**
    * Returns true if at least 1 link with the given rel exists.
    */
-  has(rel: string): boolean {
-
-    return this.store.has(rel);
-
-  }
+  has(rel: string): boolean;
 
 }
 ```

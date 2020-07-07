@@ -1,5 +1,5 @@
 ```typescript
-class BaseState<T> {
+interface State<T> {
 
   /**
    * The URI associated with this state
@@ -26,23 +26,7 @@ class BaseState<T> {
   /**
    * Reference to main client that created this state
    */
-  client!: Client;
-
-  /**
-   * Embedded resoureces
-   */
-  protected embedded: State[];
-
-  constructor(uri: string, data: T, headers: Headers, links: Links, embedded?: State[]) {
-
-    this.uri = uri;
-    this.data = data;
-    this.headers = headers;
-    this.links = links;
-    this.embedded = embedded || [];
-    this.timestamp = Date.now();
-
-  }
+  client: Client;
 
   /**
    * Content-headers are a subset of HTTP headers that related directly
@@ -52,14 +36,14 @@ class BaseState<T> {
    * response, but will also be sent back to the server in a PUT
    * request.
    */
-  contentHeaders(): Headers; 
+  contentHeaders(): Headers;
 
   /**
    * Return an action by name.
    *
    * If the format provides a default action, the name may be omitted.
    */
-  action<TFormData = any>(name?: string): Action<TFormData>; 
+  action<TFormData = any>(name?: string): Action<TFormData>;
 
   /**
    * Returns a serialization of the state that can be used in a HTTP
@@ -79,7 +63,7 @@ class BaseState<T> {
    *
    * This method returns every embedded resource.
    */
-  getEmbedded(): State[]; 
+  getEmbedded(): State[];
 
   /**
    * Timestamp of when the State was first generated
