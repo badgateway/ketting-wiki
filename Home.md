@@ -9,7 +9,7 @@ use it without having to think about Typescript.
 * [Installation](Installation).
 * [Getting started](Getting-Started).
 * [Following Links](Following-Links).
-* [Updating to Ketting 6](Upgrading)
+* [Upgrading to Ketting 6](Upgrading)
 
 ## Advanced features
 
