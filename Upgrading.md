@@ -21,6 +21,7 @@ A non-exhaustive list of new features:
 * It's now possible to set `Content-Type` and other headers on every
   resource method such as `Resource.post()`, `Resource.patch()`, etc.
 * `update`, `stale` and `delete` events on Resources.
+* PKCE support for OAuth2.
 * Links can now be mutated and sent back to the server.
 * Support for submitting HTML forms and Siren actions.
 * Nested transcluded items/embeds.
