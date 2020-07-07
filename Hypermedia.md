@@ -1,5 +1,5 @@
 *Note: it's strongly advisable to read [Getting Started](Getting-Started),
-as this page builds upon all the established concepts there.*
+first as this page builds upon all the established concepts there.*
 
 If your REST API uses Hypermedia in any way, Ketting gets additional
 powers. Ketting allows you to traverse your API through links that

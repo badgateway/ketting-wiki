@@ -150,7 +150,8 @@ resources, and your client does not need to change to instantly take
 advantage of this optimization.
 
 
-### Sending Prefer-Push
+Sending Prefer-Push
+-------------------
 
 When fetching a collection, it's also possible to send a [Prefer-Push][3] header.
 This can instruct the server to do a HTTP/2 Server Push for linked resources.
@@ -176,7 +177,8 @@ If the server supports this feature, it will initiate a HTTP/2 push for each
 item. It will be ignored by servers that don't support it.
 
 
-### Sending Prefer: transclude=...
+Sending Prefer: transclude=...
+------------------------------
 
 Very similarly, it's possible to send a [`Prefer: transclude=item`][4] header:
 
@@ -191,7 +193,8 @@ relationship'.
 
 This also only works if the server supports this feature.
 
-### Reading list
+Reading list
+------------
 
 1. [Let's Stop Building APIs Around a Network Hack][3] - Phil Sturgeon
 2. [Performance testing HTTP/1.1 vs HTTP/2 vs HTTP/2 + Server Push for REST APIs][2] - Evert Pot

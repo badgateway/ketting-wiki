@@ -76,7 +76,7 @@ The following properties and functions are available on the `State` object:
 * `clone()` - Creates a deep copy of the State object.
 * `action()` - Covered in [Hypermedia](Hypermedia).
 * `links` - All Weblinks that were encoded in the HTTP Link header, or in the
-   response body. Covered further [Hypermedia](Hypermedia).
+   response body. Covered further in [Hypermedia](Hypermedia).
 
 In short, the State object attempts to describe a full state you might
 get back from the server, and provide a convenient API to work with it.
