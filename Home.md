@@ -16,6 +16,10 @@ browsers and in node.js.
 * [CORS header suggestions](CORS).
 * [Typescript features](Typescript).
 
+## Bindings
+
+* [React](React)
+
 ## API
 
 * [Client](Client)
