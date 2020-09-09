@@ -23,7 +23,7 @@ A non-exhaustive list of new features:
 * `update`, `stale` and `delete` events on Resources.
 * PKCE support for OAuth2.
 * Links can now be mutated and sent back to the server.
-* Support for submitting HTML forms and Siren actions.
+* Support for submitting HTML forms, Siren and HAL Forms (experimental).
 * Nested transcluded items/embeds.
 * A separate `post()` and `postFollow()` method.
 * Better support for binary responses and `text/*` responses.
