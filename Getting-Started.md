@@ -9,7 +9,7 @@ Ketting has two major primitives that are important to learn:
 * A `State`, which represents the result of a `GET` request, or what
   you would submit with a `PUT` request.
 
-Lets assume that we have a REST API that manages blog articles.
+Let's assume that we have a REST API that manages blog articles.
 Each article is encoded in JSON and might look like this:
 
 ```json
@@ -36,7 +36,7 @@ import { Client } from 'ketting';
 // Set up the client
 const client = new Client('https://api.example');
 
-// Get the resource. Note that this not do any HTTP requests.
+// Get the resource. Note that this does not make any HTTP requests.
 const myArticleRes = client.go('/acticle/1');
 
 // Get the state. This does a GET request
@@ -89,7 +89,7 @@ Resources
 We covered that `resource.get()` gives you a State object, and `.put()` can
 send the state back to the server.
 
-For this to work with Ketting, the assumption is that *what you PUT* to
+For this to work with Ketting, the assumption is that *what you `PUT`* to
 an endpoint on a server more or less has the same shape as what you would
 `GET` immediately after.
 
