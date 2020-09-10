@@ -1,5 +1,5 @@
-*Note: it's strongly advisable to read [Getting Started](Getting-Started),
-first as this page builds upon all the established concepts there.*
+*Note: it's strongly advisable to read [Getting Started](Getting-Started)
+first, as this page builds upon all the established concepts there.*
 
 If your REST API uses Hypermedia in any way, Ketting gets additional
 powers. Ketting allows you to traverse your API through links that
@@ -40,7 +40,7 @@ const articleRes = client.go('/acticle/1');
 ```
 
 Now we have an 'article' resource, we want to find the related `author`
-resource. We do this what's called the "rel" or "relationship type".
+resource. We do this with what's called the "rel" or "relationship type".
 
 ```typescript
 const authorRes = await articleRes.follow('author');
@@ -53,7 +53,7 @@ That's it. `authorRes` is a new Resource object that refers to
 A more complex example
 ----------------------
 
-Lets do a more complex example. Our API has a home document that has
+Let's do a more complex example. Our API has a home document that has
 a list of links with resources available on the server.
 
 One of those is an `article-collection`. The `article-collection` has
@@ -89,7 +89,7 @@ HAL example of the article collection:
 }
 ```
 
-Our goal is now to get a full list of articles, and log their bodies.
+Our goal is now to get a full list of articles and log their bodies.
 
 ```typescript
 const client = new Client('https://api.example/');
@@ -110,10 +110,10 @@ for(const resource of articleResources) {
 }
 ```
 
-At this point you might ask: Is doing a lot of sequential `GET` request
+At this point you might ask: Is doing a lot of sequential `GET` requests 
 going to be slow? The answer is: yes it might, but there are a number of
 optimization strategies that Ketting supports, including prefetching,
-paralizing, embedding/compound resources and leveraging HTTP/2 Push.
+parallelizing, embedding/compound resources and leveraging HTTP/2 Push.
 
 Read [Optimizing](Optimizing) for more details about this topic.
 
@@ -124,7 +124,7 @@ If you need to do several steps of `.follow()` and/or `.followAll()`, you can
 just chain them together:
 
 ```typescript
-// Lets find the author of the first article
+// Let's find the author of the first article
 
 const client = new Client('https://api.example/');
 const home = client.go();
