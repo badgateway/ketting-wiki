@@ -1,4 +1,4 @@
-Lets get started with Ketting!
+Let's get started with Ketting!
 
 The Basics
 ----------
