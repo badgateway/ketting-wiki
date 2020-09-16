@@ -76,7 +76,7 @@ function ArticleView() {
 
   const { loading, error, data } = useResource<Article>('/article/1');
   if (loading) return <p>Loading...</p>;
-  if (error) return <div class="error">{error.message}</div>;
+  if (error) return <div className="error">{error.message}</div>;
 
   return <article>
     <h1>{data.title}</h1>
@@ -114,7 +114,7 @@ function ArticleView() {
 
   const { loading, error, data, setData, submit } = useResource<Article>('/article/1');
   if (loading) return <p>Loading...</p>;
-  if (error) return <div class="error">{error.message}</div>;
+  if (error) return <div className="error">{error.message}</div>;
 
   const handleChangeBody = (ev: React.FormEvent<any>) => {
     setData({
@@ -164,7 +164,7 @@ function ArticleView() {
     },
   );
   if (loading) return <p>Loading...</p>;
-  if (error) return <div class="error">{error.message}</div>;
+  if (error) return <div className="error">{error.message}</div>;
   
   /* Etc */
 }
