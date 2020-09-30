@@ -47,7 +47,7 @@ you need to get it from the `.data` property.
 ```typescript
 // Ketting 6
 const state = await resource.get();
-const body = state.body;
+const body = state.data;
 ```
 
 Similarly, when doing a `PUT` request, you need also wrap your body:
