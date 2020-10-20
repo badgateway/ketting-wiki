@@ -242,6 +242,71 @@ Return values:
 * `setResourceState` - Similar to setData, but needs an entire Ketting State
   object.
 
+### useCollection
+
+The `useCollection` hook allows you to get a list of resources
+inside a collection.
+
+This hook makes a few assumptions:
+
+1. The collection is some hypermedia document, such as HAL, HTML, Siren,
+   or anything Ketting supports.
+2. The collection lists its members via 'item' web links.
+
+Example call:
+
+```typescript
+const {
+  loading,
+  error,
+  items
+} = useResource<Article>(resource);
+```
+
+The resource may be passed as a `Resource` object, a `Promise<Resource>`, or a
+uri string.
+
+Returned properties:
+
+* loading - will be true as long as the result is still being fetched from
+            the server.
+* error - Will be null or an error object.
+* items - Will contain an array of resources, each typed `Resource<T>` where
+          `T` is the passed generic argument.
+
+Bigger example:
+
+```typescript
+function MyCollection() {
+
+  const {
+    loading,
+    error,
+    items
+  } = useCollection<Article>('/articles');
+
+  if (loading) return <div>loading...</div>;
+  if (error) return <div class="error">boo</div>;
+
+  return <ul>{items.map(item => <MyCollectionItem resource={item} />)}</ul>
+
+}
+
+function MyCollectionItem({resource}: { resource: Resource<Article> }) {
+  const {
+    loading,
+    error,
+    data
+  } = useResource(resource);
+
+  if (loading) return <div>loading...</div>;
+  if (error) return <div className="error">boo</div>;
+
+  return <li>{data.title} - {data.body}</li>;
+
+}
+```
+
 ### useClient
 
 Gives you direct access to the Ketting client. For this to work, the
