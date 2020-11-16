@@ -155,14 +155,14 @@ first few lines:
 ```typescript
 function ArticleView() {
 
-  const { loading, error, data, setData, submit } = useResource<Article>(
+  const { loading, error, data, setData, submit } = useResource<Article>({
     resource: '/article/',
     mode: 'POST',
     initialData: {
       title: 'New post!',
       body: 'Enter your content here',
     },
-  );
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return <div className="error">{error.message}</div>;
   
