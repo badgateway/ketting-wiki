@@ -37,7 +37,7 @@ import { Client } from 'ketting';
 const client = new Client('https://api.example');
 
 // Get the resource. Note that this does not make any HTTP requests.
-const myArticleRes = client.go('/acticle/1');
+const myArticleRes = client.go('/article/1');
 
 // Get the state. This does a GET request
 const myArticleState = await client.get();
