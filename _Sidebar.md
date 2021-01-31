@@ -12,6 +12,7 @@
 * [Public API description](API).
 * [CORS header suggestions](CORS).
 * [Typescript features](Typescript).
+* [Deprecation Warnings](Deprecation-Warnings)
 
 ## Bindings
 
