@@ -12,7 +12,6 @@ browsers and in node.js.
 
 * [Authentication](Authentication).
 * [Optimizing many requests](Optimizing)
-* [Public API description](API).
 * [CORS header suggestions](CORS).
 * [Typescript features](Typescript).
 

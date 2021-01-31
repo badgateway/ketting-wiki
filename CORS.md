@@ -4,8 +4,8 @@ use every feature.
 
 ```http
 Access-Control-Allow-Origin: [yourdomain]
-Access-Control-Allow-Headers: Content-Type, User-Agent, Authorization, Accept, Prefer, Prefer-Push, Link
-Access-Control-Allow-Methods: DELETE, GET, PATCH, POST, PUT
+Access-Control-Allow-Headers: Content-Type, User-Agent, Authorization, Accept, Prefer, Link
+Access-Control-Allow-Methods: DELETE, GET, PATCH, POST, PUT, HEAD
 Access-Control-Expose-Headers: Location, Link
 ```
 
