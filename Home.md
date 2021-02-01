@@ -8,16 +8,20 @@ browsers and in node.js.
 * [Hypermedia](Hypermedia)
 * [Upgrading to Ketting 6](Upgrading)
 
+
 ## Advanced features
 
 * [Authentication](Authentication).
 * [Optimizing many requests](Optimizing)
 * [CORS header suggestions](CORS).
 * [Typescript features](Typescript).
+* [Deprecation Warnings](Deprecation-Warnings)
+
 
 ## Bindings
 
 * [React](React)
+
 
 ## API
 
