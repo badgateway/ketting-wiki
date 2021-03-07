@@ -177,6 +177,8 @@ have the following properties:
 * `mode` Can be POST or PUT.
 * `initialData` - The 'template'. Not too different from the argument to
   [useState()][5].
+* `refreshOnStale` - If specified, the client will automatically do a `GET`
+  request if the resource data is stale.
 
 When `submit()` is eventually called, Ketting will send a `POST` request
 to your server with the request body.
@@ -209,6 +211,9 @@ const { loading, error, data } = useResource({
   resource: '/article/'
   mode: 'POST',
   initialData: { foo: 'bar' },
+
+  // Optional
+  refreshOnStale: true,
 });
 
 
@@ -306,6 +311,17 @@ function MyCollectionItem({resource}: { resource: Resource<Article> }) {
 
 }
 ```
+
+`useCollection` has a `refreshOnStale` option as well. When specified, Ketting
+will automatically refresh the collection state if the current representation
+was stale.
+
+One example of this, is when an unsafe HTTP request is sent to the collection,
+for example a `POST` request to add a new member.
+
+After that request succeeds, stale events are emitted and this option will
+cause Ketting to go to the server, fetch the new state and re-render.
+
 
 ### useClient
 
