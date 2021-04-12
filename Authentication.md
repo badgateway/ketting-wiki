@@ -48,7 +48,7 @@ client.use(oauth2({
   grantType: 'password',
   clientId: 'fooClient',
   clientSecret: 'barSecret',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
   scopes: ['test']
   userName: 'fooOwner',
   password: 'barPassword'
@@ -66,7 +66,7 @@ client.use(oauth2({
   grantType: 'client_credentials',
   clientId: 'fooClient',
   clientSecret: 'barSecret',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
   scopes: ['test']
 });
 ```
@@ -81,7 +81,7 @@ client.use(oauth2({
   grant_type: 'authorization_code',
   clientId: 'fooClient',
   code: '...',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 });
 
 ```
@@ -115,7 +115,7 @@ client.use(oauth2({
   clientSecret: '...', // Sometimes optional
   accessToken: '...',
   refreshToken: '...', // Optional.
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 });
 ```
 
@@ -140,7 +140,7 @@ client.use(oauth2({
   clientSecret: '...', // Sometimes optional
   accessToken: '...',
   refreshToken: '...', // Optional.
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 }, '*.example.org');
 
 

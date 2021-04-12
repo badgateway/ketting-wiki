@@ -219,7 +219,7 @@ const client = new Client(
       grant_type: 'authorization_code',
       clientId: 'fooClient',
       code: '...',
-      tokenEndpointUri: 'https://api.example.org/oauth/token',
+      tokenEndpoint: 'https://api.example.org/oauth/token',
     }
   }
 });
@@ -242,7 +242,7 @@ client.use(oauth2({
   grant_type: 'authorization_code',
   clientId: 'fooClient',
   code: '...',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 });
 ```
 
@@ -255,7 +255,7 @@ client.use(oauth2({
   grant_type: 'authorization_code',
   clientId: 'fooClient',
   code: '...',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 }, 'api.example.org');
 ```
 
@@ -267,7 +267,7 @@ client.use(oauth2({
   grant_type: 'authorization_code',
   clientId: 'fooClient',
   code: '...',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 }, '*.example.org');
 ```
 

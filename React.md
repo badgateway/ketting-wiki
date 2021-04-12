@@ -367,7 +367,7 @@ client.use(oauth2({
   grantType: 'authorization_code',
   clientId: 'fooClient',
   code: '...',
-  tokenEndpointUri: 'https://api.example.org/oauth/token',
+  tokenEndpoint: 'https://api.example.org/oauth/token',
 });
 ```
 
