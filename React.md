@@ -158,7 +158,7 @@ function ArticleView() {
   const { loading, error, data, setData, submit } = useResource<Article>({
     resource: '/article/',
     mode: 'POST',
-    initialData: {
+    initialState: {
       title: 'New post!',
       body: 'Enter your content here',
     },
@@ -175,7 +175,7 @@ have the following properties:
 
 * `resource` Where to send the request to
 * `mode` Can be POST or PUT.
-* `initialData` - The 'template'. Not too different from the argument to
+* `initialState` - The 'template'. Not too different from the argument to
   [useState()][5].
 * `refreshOnStale` - If specified, the client will automatically do a `GET`
   request if the resource data is stale.
@@ -210,7 +210,7 @@ const { loading, error, data } = useResource('/article/1');
 const { loading, error, data } = useResource({
   resource: '/article/'
   mode: 'POST',
-  initialData: { foo: 'bar' },
+  initialState: { foo: 'bar' },
 
   // Optional
   refreshOnStale: true,
