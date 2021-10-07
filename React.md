@@ -1,5 +1,5 @@
-*Note: it's advisable to read [Getting Started](Getting-Started),
-first as this page builds upon all the established concepts there.*
+*Note: it's advisable to read [Getting Started](Getting-Started)
+first, as this page builds upon all the established concepts there.*
 
 If you use Ketting with [React][1], Ketting ships with a bunch of
 React bindings that make developing a lot easier.
