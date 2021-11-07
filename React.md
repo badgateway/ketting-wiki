@@ -265,7 +265,7 @@ const {
   loading,
   error,
   items
-} = useResource<Article>(resource);
+} = useCollection<Article>(resource);
 ```
 
 The resource may be passed as a `Resource` object, a `Promise<Resource>`, or a
