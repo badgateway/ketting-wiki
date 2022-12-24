@@ -121,6 +121,21 @@ client.use(oauth2({
 
 This is also how the client might be setup after an `implicit` flow.
 
+Bearer token
+------------
+
+In case your server doesn't have full OAuth2 support and you want to just pass
+a [bearer token](https://www.rfc-editor.org/rfc/rfc6750) you can use the
+Bearer middleware:
+
+```typescript
+import { Client, bearerAuth } from 'ketting';
+
+const client = new Client('api.example.org');
+client.use(bearerAuth('Your secret token goes here'));
+```
+
+
 Multi-domain authentication
 ---------------------------
 
