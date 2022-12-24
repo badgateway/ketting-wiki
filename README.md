@@ -9,5 +9,5 @@ After a change has been merged, updating the wiki is done with the following com
 
 ```
 git remote add wiki git@github.com:badgateway/ketting.wiki.git
-git push wiki main
+git push wiki master
 ```
